@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="kotlin-stdlib-2.4.0-Beta2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../Useful Jars/kotlin-stdlib-2.4.0-Beta2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../Useful Jars/mysql-connector-j-9.6.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../Useful Jars/java-dotenv-5.2.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
