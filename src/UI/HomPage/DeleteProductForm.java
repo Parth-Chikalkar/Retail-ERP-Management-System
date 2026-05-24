@@ -1,5 +1,7 @@
 package UI.HomPage;
 
+import Controllers.ProductController;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -16,7 +18,16 @@ public class DeleteProductForm extends JPanel {
         add(delete);
 
         delete.addActionListener(e -> {
-            JOptionPane.showMessageDialog(this, "Deleted (Demo)");
+             int idVal = Integer.parseInt(id.getText()) ;
+             ProductController con = new ProductController();
+             boolean bool = con.deleteProduct(idVal);
+             if(bool){
+                 JOptionPane.showMessageDialog(this, "Product Deleted Sucessfully ");
+                 id.setText("");
+             }
+             else{
+                 JOptionPane.showMessageDialog(this, "Failed To DELETE Product ");
+             }
         });
     }
 }

@@ -51,4 +51,21 @@ public class ProductController {
         }
 
     }
+
+    public boolean deleteProduct(int id ){
+        String sql = "DELETE FROM PRODUCT WHERE p_id = ?";
+        try{
+            DBConnect con = new DBConnect();
+            Connection conc = con.dbCon();
+            PreparedStatement stm = conc.prepareStatement(sql);
+            stm.setInt(1,id);
+            stm.executeUpdate();
+            return true;
+        }
+        catch (SQLException e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+
+    }
 }
