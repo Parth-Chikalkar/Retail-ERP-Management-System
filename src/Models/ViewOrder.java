@@ -18,6 +18,13 @@ public class ViewOrder {
 
 
     }
+
+    public ViewOrder (String product_name , int quantity , int total , String customer_name){
+        this.product_name = product_name;
+        this.quantity = quantity;
+        this.total = total;
+        this.customer_name = customer_name;
+    }
     // Getters
     public int getQuantity() {
         return quantity;

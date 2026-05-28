@@ -29,6 +29,7 @@ public class Admin extends JPanel {
         sidebar.add(createButton("View Customers", e -> showPanel(new ViewCustomers())));
         sidebar.add(createButton("Update Customer",e -> showPanel(new UpdateCustomerFrom())));
         sidebar.add(createButton("Delete Customer", e-> showPanel(new DeleteCustomerForm())));
+        sidebar.add(createButton("View Customer Order",e->showPanel(new ViewCustomerOrder())));
 
         add(sidebar, BorderLayout.WEST);
         add(content, BorderLayout.CENTER);

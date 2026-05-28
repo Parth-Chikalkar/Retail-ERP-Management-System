@@ -3,6 +3,8 @@ package Controllers;
 import Models.ViewOrder;
 import Utils.DBConnect;
 import Utils.HelperFunctions;
+
+import javax.swing.text.View;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -106,6 +108,36 @@ public class OrderController {
             System.out.println(e.getMessage());
             return null;
 
+        }
+
+    }
+
+    public ArrayList<ViewOrder> getSingleCutomerData(int cu_id){
+        String sql = "SELECT NAME FROM USERS WHERE u_id IN (select u_id from CUSTOMERS WHERE cu_id = ? ) ";
+String sql2 = " SELECT P.name, i.QUANTITY , i.PRICE from ORDER_ITEMS i JOIN PRODUCT p ON i.p_id = p.p_id WHERE O_ID in (SELECT O_ID FROM ORDERS WHERE cu_id = ?);";
+        try{
+            Connection con = new DBConnect().dbCon();
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.setInt(1,cu_id);
+            ResultSet set = stm.executeQuery();
+            String name = null;
+
+            if(set.next()){
+                name = set.getString("NAME");
+            }
+            PreparedStatement stm2 = con.prepareStatement(sql2);
+            stm2.setInt(1,cu_id);
+            ResultSet set2 = stm2.executeQuery();
+            ArrayList <ViewOrder> list = new ArrayList<>();
+           while (set2.next()){
+               list.add(new ViewOrder(set2.getString("NAME"),set2.getInt("QUANTITY"),set2.getInt("PRICE"),name));
+           }
+
+            return list;
+        } catch(SQLException e)
+        {
+            System.out.println(e.getMessage());
+            return null;
         }
 
     }
